@@ -1497,11 +1497,13 @@ Procedure CheckDirectoryPresent;
 	{ Make sure that the default save directory exists. If not, }
 	{ create it. }
 begin
+	{ Asciiverse: ForceDirectories, so a missing parent such as }
+	{ ~/.config is made too; MkDir stopped with "File not found". }
 	if not DirectoryExists( Config_Directory ) then begin
-		MkDir( Config_Directory );
+		ForceDirectories( Config_Directory );
 	end;
 	if not DirectoryExists( Save_Game_Directory ) then begin
-		MkDir( Save_Game_Directory );
+		ForceDirectories( Save_Game_Directory );
 	end;
 
 

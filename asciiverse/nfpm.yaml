@@ -1,0 +1,40 @@
+# System packages (.deb, .rpm, .apk, Arch) for GearHead 2, built by
+# nfpm from the same static Linux build as the av archive. The release
+# workflow sets VERSION, RELEASE (our packaging release) and ARCH (amd64
+# or arm64).
+#
+# The av layout is installed whole in /usr/lib/gearhead2 (start script,
+# lib/), with /usr/bin/gearhead2 a link to the start script, which follows
+# it. No .desktop file on purpose: av is the one place titles are started
+# from.
+name: gearhead-2
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: games
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/gearhead-2
+license: LGPL-2.1-or-later
+description: |
+  The roguelike mecha RPG, second in the series, in the terminal.
+  Pilot giant robots, take on missions and follow a story generated for
+  each character, in the GearHead universe.
+  GearHead 2 by Joseph Hewitt, ASCII version, packaged by Asciiverse.
+contents:
+  - src: stage/gearhead2
+    dst: /usr/lib/gearhead2/gearhead2
+    file_info: { mode: 0755 }
+  - src: stage/lib/
+    dst: /usr/lib/gearhead2/lib/
+  - src: /usr/lib/gearhead2/gearhead2
+    dst: /usr/bin/gearhead2
+    type: symlink
+  - src: license.txt
+    dst: /usr/share/doc/gearhead-2/copyright
+    file_info: { mode: 0644 }
+  - src: PATCHES.md
+    dst: /usr/share/doc/gearhead-2/PATCHES.md
+    file_info: { mode: 0644 }
