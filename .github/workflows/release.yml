@@ -1,3 +1,4 @@
+# Asciiverse release workflow (tag v* or run by hand with a tag)
 # Builds GearHead 2's ASCII version for the Asciiverse catalog and as
 # system packages.
 #
